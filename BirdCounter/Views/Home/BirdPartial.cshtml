@@ -1,0 +1,9 @@
+﻿@model BirdCounter.Models.Bird;
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="@Url.Content(Model.Image)" alt="Card image cap" runat="server">
+    <div class="card-body">
+        <h2 class="card-title">@Model.Name</h2>
+        <p class="card-text">@Model.Description</p>
+    </div>
+</div>

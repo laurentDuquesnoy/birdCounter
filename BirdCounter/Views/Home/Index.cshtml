@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<h1 class="document__title">List of birds</h1>
+<div class="bird__list--wrapper">
+    @foreach (Bird b in Model.Birds)
+    {
+        <partial name="BirdPartial" model="b"/>
+    }
+</div>
