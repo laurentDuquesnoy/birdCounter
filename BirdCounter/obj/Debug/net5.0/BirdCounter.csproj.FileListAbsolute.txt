@@ -77,3 +77,6 @@ C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdC
 C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\BirdCounter.pdb
 C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\BirdCounter.genruntimeconfig.cache
 C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Home\BirdPartial.cshtml.g.cs
+C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Home\Count.cshtml.g.cs
+C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Home\Detail.cshtml.g.cs
+C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Home\RowPartial.cshtml.g.cs

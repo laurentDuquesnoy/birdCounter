@@ -12,6 +12,8 @@ namespace BirdCounter.Data
     public class DataBase : DbContext
     {
         public DbSet<Bird> Birds { get; set; }
+        public DbSet<BirdCount> BirdCounts { get; set; }
+        public DbSet<Session> Sessions { get; set; }
         
         public DataBase(DbContextOptions<DataBase> options) : base(options)
         {
@@ -48,6 +50,29 @@ namespace BirdCounter.Data
             Birds.Add(bird1);
             Birds.Add(bird2);
             Birds.Add(bird3);
+
+            Session s = new Session()
+            {
+                Id = 1,
+                StartTime = new DateTime(2017, 10, 1, 20, 15, 00),
+                EndTime = new DateTime(2017, 10, 1, 22, 15, 00)
+            };
+            BirdCount count1 = new BirdCount()
+            {
+                BirdId = 1,
+                Count = 20,
+                SessionId = 1
+            };
+            BirdCount count2 = new BirdCount()
+            {
+                BirdId = 2,
+                Count = 5,
+                SessionId = 1
+            };
+
+            Sessions.Add(s);
+            BirdCounts.Add(count1);
+            BirdCounts.Add(count2);
             
             SaveChanges();
         }
@@ -55,6 +80,24 @@ namespace BirdCounter.Data
         public List<Bird> getBirds()
         {
             return Birds.ToList();
+        }
+
+        public Session GetSession(int id)
+        {
+            Session returnSession = Sessions.FirstOrDefault(a => a.Id == id);
+            return returnSession;
+        }
+
+        public BirdCount GetCountWithSessionId(int id)
+        {
+            BirdCount returnCount = BirdCounts.FirstOrDefault(a => a.SessionId == id);
+            return returnCount;
+        }
+
+        public List<Session> getSessions()
+        {
+            List<Session> returnValue = this.Sessions.ToList();
+            return returnValue;
         }
     }
 }

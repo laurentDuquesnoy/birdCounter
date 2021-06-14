@@ -1,0 +1,9 @@
+﻿@model BirdCounter.Models.Session
+
+<tr>
+    <td>@Model.StartTime</td>
+    <td>@Model.EndTime</td>
+    <td>
+        <a class="btn-link" asp-action="Detail" asp-route-id="@Model.Id">Detail</a>
+    </td>
+</tr>
