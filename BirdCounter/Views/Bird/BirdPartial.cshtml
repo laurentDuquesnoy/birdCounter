@@ -1,0 +1,13 @@
+﻿@model BirdCounter.Models.Bird;
+
+<div class="card" >
+    <img class="card-img-top" src="@Url.Content(Model.Image)" alt="Card image cap" runat="server">
+    <div class="card-body">
+        <h2 class="card-title">@Model.Name</h2>
+        <p class="card-text">@Model.Description</p>
+        <div class="card__actions__wrapper">
+            <a asp-action="Edit" asp-route-birdId="@Model.Id" class="btn-primary card__action">Edit bird</a>
+            <a asp-action="Remove" asp-route-birdId="@Model.Id" class="btn-danger card__action">Remove bird</a>
+        </div>
+    </div>
+</div>

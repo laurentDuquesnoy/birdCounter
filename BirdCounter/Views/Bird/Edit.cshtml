@@ -1,0 +1,8 @@
+﻿@model Bird
+@{
+    ViewData["Title"] = "Edit " + @Model.Name;
+}
+<form method="post">
+    <partial name="CreateEditPartial" model="Model"/>
+    <input type="submit" value="Confirm" class="btn btn-primary">
+</form>

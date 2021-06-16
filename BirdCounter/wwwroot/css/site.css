@@ -73,6 +73,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .start__btn{
@@ -127,4 +128,17 @@ body {
   background-color: #007bff;
   color: white;
   font-weight: bold;
+}
+
+.card__action , .index__action{
+  padding: .5rem;
+}
+
+.index__action{
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+.card{
+  width: 20rem;
 }

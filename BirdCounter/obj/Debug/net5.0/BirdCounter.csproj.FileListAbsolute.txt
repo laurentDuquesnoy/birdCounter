@@ -82,3 +82,7 @@ C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdC
 C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Home\RowPartial.cshtml.g.cs
 C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Home\DetailPartial.cshtml.g.cs
 C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Home\CountPartial.cshtml.g.cs
+C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Bird\BirdPartial.cshtml.g.cs
+C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Bird\Add.cshtml.g.cs
+C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Bird\CreateEditPartial.cshtml.g.cs
+C:\Users\laure\Documents\Documents\vives\PAA\assignments\three\BirdCounter\BirdCounter\obj\Debug\net5.0\Razor\Views\Bird\Edit.cshtml.g.cs

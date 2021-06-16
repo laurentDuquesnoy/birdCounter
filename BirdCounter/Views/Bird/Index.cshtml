@@ -1,19 +1,15 @@
-﻿@page
-@model BirdCounter.Views.Bird.Index
-
-@{
-    Layout = null;
+﻿@{
+    ViewData["Title"] = "Manage birds";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
 <div>
-    
+    <h1 class="index__action">Manage birds</h1>
+    <a asp-action="Add" class="btn-primary index__action">Add new bird</a>
 </div>
-</body>
-</html>
+<h2 class="index__action">Bird Catalog</h2>
+<div class="bird__list--wrapper">
+    @foreach (Bird bird in Model.Birds)
+    {
+        <partial name="BirdPartial" model="bird"/>
+    }
+</div>
