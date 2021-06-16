@@ -1,19 +1,26 @@
-﻿@page
-@model BirdCounter.Views.Home.Detail
+﻿@model BirdCounter.Models.DetailObject
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+<h1>
+    Session no. @Model.session.Id
+</h1>
+<div class="times__wrapper">
+    <p>Start time: @Model.session.StartTime</p>
+    <p>End time: @Model.session.EndTime</p>
 </div>
-</body>
-</html>
+<h2>Birds counted: </h2>
+<table class="table table-striped">
+    <thead>
+    <td>
+        vogelsoort
+    </td>
+    <td>
+        aantal keer gespot
+    </td>
+    </thead>
+    <tbody>
+    @foreach (BirdSession c in Model.birds)
+    {
+        <partial name="DetailPartial" model="c"/>
+    }
+    </tbody>
+</table>

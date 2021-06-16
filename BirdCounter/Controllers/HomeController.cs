@@ -47,8 +47,8 @@ namespace BirdCounter.Controllers
 
         public IActionResult Detail(int id)
         {
-            DetailObject
-            return View(this);
+            DetailObject detail = DataBase.CreateDetailObject(id);
+            return View(detail);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

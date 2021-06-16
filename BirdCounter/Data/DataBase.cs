@@ -99,5 +99,23 @@ namespace BirdCounter.Data
             List<Session> returnValue = this.Sessions.ToList();
             return returnValue;
         }
+
+        public DetailObject CreateDetailObject(int sessionId)
+        {
+            DetailObject returnValue = new DetailObject();
+            returnValue.session = GetSession(sessionId);
+            returnValue.birds = new List<BirdSession>();
+            List<BirdSession> sessions = new List<BirdSession>();
+
+            foreach (BirdCount count in BirdCounts.Where(a => a.SessionId == sessionId).ToList())
+            {
+                BirdSession session = new BirdSession();
+                session.count = count;
+                session.bird = Birds.FirstOrDefault(a => a.Id == count.BirdId);
+                sessions.Add(session);
+            }
+            returnValue.birds.AddRange(sessions);
+            return returnValue;
+        }
     }
 }
