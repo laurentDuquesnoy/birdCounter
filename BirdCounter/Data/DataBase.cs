@@ -117,5 +117,74 @@ namespace BirdCounter.Data
             returnValue.birds.AddRange(sessions);
             return returnValue;
         }
+
+        public int CreateSession()
+        {
+            Session s = new Session()
+            {
+                StartTime = DateTime.Now
+            };
+            Sessions.Add(s);
+            SaveChanges();
+            return Sessions.Last().Id;
+        }
+
+        public void AddCount(int BirdId, int SessionId)
+        {
+            if (!CheckDuplicates(BirdId, SessionId))
+            {
+                BirdCounts.Add(new BirdCount()
+                {
+                    BirdId = BirdId,
+                    SessionId = SessionId,
+                    Count = 1
+                });
+                SaveChanges();
+            }
+            else
+            {
+                BirdCount bc = BirdCounts.FirstOrDefault(a => a.BirdId == BirdId && a.SessionId == SessionId);
+                bc.Count++;
+                SaveChanges();
+            }
+            
+        }
+
+        public void SubtractCount(int BirdId, int SessionId)
+        {
+            var bc = BirdCounts.FirstOrDefault(a => a.BirdId == BirdId && a.SessionId == SessionId);
+            if (bc.Count == 1)
+            {
+                BirdCounts.Remove(bc);
+            }
+            else
+            {
+                bc.Count--;
+            }
+
+            SaveChanges();
+        }
+
+        public void EndSession(int id)
+        {
+            var session = Sessions.FirstOrDefault(a => a.Id == id);
+            session.EndTime = DateTime.Now;
+            SaveChanges();
+        }
+        private bool CheckDuplicates(int BirdId, int SessionId)
+        {
+            var isDuplicate = false;
+            foreach (var bc in BirdCounts.ToList())
+            {
+                if (bc.BirdId == BirdId && bc.SessionId == SessionId) isDuplicate = true;
+            }
+            return isDuplicate;
+        }
+
+        public Bird GetBirdById(int birdId)
+        {
+            var returnValue = Birds.FirstOrDefault(a => a.Id == birdId);
+            return returnValue;
+        }
     }
 }

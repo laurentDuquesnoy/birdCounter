@@ -1,11 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<h1 class="document__title">Sessions</h1>
-<button asp-action="Count" class="btn-primary">
+<h1 class="document__title main__title">Sessions</h1>
+<a asp-action="Count" class="btn-primary start__btn">
     Start new session
-</button>
-<table class="table table-striped">
+</a>
+<table class="table table-striped table__sessions">
     <thead>
     <tr>
         <td>Start Date</td>
@@ -21,9 +21,3 @@
     </tbody>
 </table>
 
-<div class="bird__list--wrapper">
-    @foreach (Bird b in Model.Birds)
-    {
-        <partial name="BirdPartial" model="b"/>
-    }
-</div>

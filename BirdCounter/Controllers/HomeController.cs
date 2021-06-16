@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using BirdCounter.Models;
 using BirdCounter.Views.Home;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BirdCounter.Controllers
 {
@@ -18,6 +19,8 @@ namespace BirdCounter.Controllers
         private DataBase DataBase { get; set; }
         private List<Bird> _birds { get; set; }
         private List<Session> _sessions { get; set; }
+        
+        private DetailObject _currentCount { get; set; }
 
         public HomeController(ILogger<HomeController> logger, DataBase database)
         {
@@ -40,8 +43,17 @@ namespace BirdCounter.Controllers
             return View();
         }
 
-        public IActionResult Count()
+        public IActionResult Count(int SessionId = 0)
         {
+            if (SessionId != 0)
+            {
+                _currentCount = DataBase.CreateDetailObject(SessionId);
+            }
+            else
+            {
+                _currentCount = DataBase.CreateDetailObject(DataBase.CreateSession());
+            }
+            
             return View(this);
         }
 
@@ -57,6 +69,23 @@ namespace BirdCounter.Controllers
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
 
+        public IActionResult AddCount(int sessionId, int BirdId)
+        {
+            DataBase.AddCount(BirdId, sessionId);
+            return RedirectToAction("Count" ,new{SessionId = sessionId});
+        }
+
+        public IActionResult SubtractCount(int sessionId, int birdId)
+        {
+            DataBase.SubtractCount(birdId, sessionId);
+            return RedirectToAction("Count", new{SessionId = sessionId});
+        }
+
+        public IActionResult EndSession(int id)
+        {
+            DataBase.EndSession(id);
+            return RedirectToAction("Index");
+        }
         public List<Bird> Birds
         {
             get
@@ -69,13 +98,15 @@ namespace BirdCounter.Controllers
             }
         }
 
-        public List<Session> Sessions
+        public List<Session> Sessions => _sessions;
+
+        public DetailObject CurrentCount
         {
             get
             {
-                return _sessions;
+                return _currentCount;
             }
-        
+            set => _currentCount = value;
         }
     }
 }

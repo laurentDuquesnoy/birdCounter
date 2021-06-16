@@ -1,1 +1,64 @@
-﻿
+﻿@{
+    ViewData["Title"] = "New Session";
+}
+@using System.ComponentModel
+@model BirdCounter.Controllers.HomeController
+
+
+<h1>Current Session</h1>
+<div class="header__wrapper">
+    <p class="session__header">Session started at: @Model.CurrentCount.session.StartTime</p>
+    <a asp-action="EndSession" asp-route-id="@Model.CurrentCount.session.Id" class="btn-danger session__end">
+        End session
+    </a>
+</div>
+
+
+<table class="table table-striped table__sessions">
+    <thead>
+    <tr>
+            <td>
+                Bird
+            </td>
+            <td>
+                no. of spottings
+            </td>
+            <td>
+                actions
+            </td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (BirdSession bs in Model.CurrentCount.birds)
+    {
+        <tr>
+            <td>
+                @bs.bird.Name
+            </td>
+            <td>
+                @bs.count.Count
+            </td>
+            <td>
+                <a asp-action="AddCount" asp-route-sessionId="@Model.CurrentCount.session.Id" asp-route-birdId="@bs.bird.Id">+</a>
+                <a asp-action="SubtractCount" asp-route-sessionId="@Model.CurrentCount.session.Id" asp-route-birdId="@bs.bird.Id">-</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<h1>Bird Catalog</h1>
+<div class="bird__list--wrapper">
+    @foreach (Bird b in Model.Birds)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="@Url.Content(b.Image)" alt="Card image cap" runat="server">
+            <div class="card-body">
+                <h2 class="card-title">@b.Name</h2>
+                <p class="card-text">@b.Description</p>
+                <div class="buttons__wrapper">
+                    <a asp-action="AddCount" class="add__bird" asp-route-BirdId="@b.Id" asp-route-sessionId="@Model.CurrentCount.session.Id" >+</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
